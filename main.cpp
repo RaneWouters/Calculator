@@ -21,29 +21,25 @@ int main() {
         }
         temp1.push_back(a);
     }
+//    temp1.push_back("sin");
+//    temp1.push_back("3");
 
-//    class Operator* it = &OperatorFactory.Find("+");
-//    ((class BinaryOperator*)it)->SetLhs(1);
-//    ((class BinaryOperator*)it)->SetRhs(2);
-//    cout << ((class BinaryOperator*)it)->GetLhs() << endl;
+//    class Operator* it = &OperatorFactory.Find("!");
+//    ((class UnaryOperator*)it)->SetRhs(5);
 //    cout << ((class BinaryOperator*)it)->GetRhs() << endl;
 //    cout << ((class BinaryOperator*)it)->GetValue() << endl;
 
-//    temp1.push_back("1");
-//    temp1.push_back("+");
-//    temp1.push_back("2");
 
     queue<string> temp = RPInit(temp1);
     queue<string> temp2 = temp;
 
-    while(!temp2.empty()) {
-        cout << temp2.front() << ' ';
-        temp2.pop();
+    while (!temp2.empty()) {
+      cout << temp2.front() << ' ';
+      temp2.pop();
     }
-    cout << endl << endl;
+    cout << endl;
 
     cout << RPCalculate(temp) << endl;
-//    cout << RPCalculate(temp) << endl;
 
 //    for (auto it = temp1.begin(); it != temp1.end(); ++it) {
 //        cout << *it << OperatorFactory.Find(*it).GetPrecedence() << endl;

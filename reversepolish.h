@@ -65,6 +65,7 @@ queue<string> RPInit(vector<string>& temp) {
 double RPCalculate(queue<string>& temp) {
     stack<double> Value;
     while (!temp.empty()) {
+        //string t = temp.front();
         if (*temp.front().begin() >= '0' && *temp.front().begin() <= '9') {
             Value.push(stod(temp.front()));
             temp.pop();
@@ -78,9 +79,18 @@ double RPCalculate(queue<string>& temp) {
                 Value.push(((class BinaryOperator*)it)->GetValue());
                 temp.pop();
             } else if (it->GetOprand() == 1) {
-                ((class BinaryOperator*)it)->SetRhs(Value.top());
+
+                //double k = Value.top();
+
+                ((class UnaryOperator*)it)->SetRhs(Value.top());
                 Value.pop();
-                Value.push(((class BinaryOperator*)it)->GetValue());
+
+                //k = ((class UnaryOperator*)it)->GetRhs();
+                //cout << "k_rhs" << k << endl;
+                //k = ((class UnaryOperator*)it)->GetValue();
+                //cout << "k_value" << k << endl;
+
+                Value.push(((class UnaryOperator*)it)->GetValue());
                 temp.pop();
             }
             if (temp.empty() && Value.size() == 1) {

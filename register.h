@@ -32,10 +32,13 @@ void OperatorInit(class OperatorFactory& OperatorFactory) {
     OperatorFactory.Register("-", Minus);
     OperatorFactory.Register("*", Times);
     OperatorFactory.Register("/", Divide);
+    OperatorFactory.Register("%", Mod);
     OperatorFactory.Register("^", Pow);
     OperatorFactory.Register("sin", Sin);
     OperatorFactory.Register("cos", Cos);
     OperatorFactory.Register("tan", Tan);
+    OperatorFactory.Register("!", Factorial);
+    OperatorFactory.Register("Exp", Exp);
 }
 
 class MRegister {

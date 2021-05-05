@@ -31,7 +31,7 @@ class BinaryOperator : public Operator {
     int GetOprand() { return this->oprand; };
 
     virtual double GetValue() = 0;
-    virtual int GetPrecedence() { return 0; };
+    virtual int GetPrecedence() = 0;
 
    protected:
     double lhs;
@@ -49,8 +49,8 @@ class UnaryOperator : public Operator {
 
     int GetOprand() { return this->oprand; };
 
-    virtual double GetValue() { return 0; };
-    virtual int GetPrecedence() { return 0; };
+    virtual double GetValue() = 0;
+    virtual int GetPrecedence() = 0;
 
    protected:
     double rhs;
@@ -138,7 +138,11 @@ class Exp : public BinaryOperator {
 class Sin : public UnaryOperator {
    public:
     Sin() = default;
-    double GetValue() { return sin(rhs); }
+    double GetValue() {
+        cout << "rhs: " << rhs << endl;
+        cout << "sin:cal: " << sin(rhs) << endl;
+        return sin(rhs);
+    }
     int GetPrecedence() { return this->precedence; }
 
    protected:
@@ -164,5 +168,21 @@ class Tan : public UnaryOperator {
    protected:
     int precedence = 4;
 } Tan;
+
+class Factorial : public UnaryOperator {
+   public:
+    Factorial() = default;
+    double GetValue() {
+        double value = 1;
+        for (int q = 2; q <= floor(rhs); ++q) {
+            value *= q;
+        }
+        return value;
+    }
+    int GetPrecedence() { return this->precedence; }
+
+   protected:
+    int precedence = 5;
+} Factorial;
 
 #endif
