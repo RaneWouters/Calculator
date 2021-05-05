@@ -124,7 +124,7 @@ class Pow : public BinaryOperator {
 class Exp : public BinaryOperator {
    public:
     Exp() = default;
-    double GetValue() { return pow(lhs, rhs); }
+    double GetValue() { return (lhs * pow(10, rhs)); }
     int GetPrecedence() { return this->precedence; }
 
    protected:
@@ -138,15 +138,11 @@ class Exp : public BinaryOperator {
 class Sin : public UnaryOperator {
    public:
     Sin() = default;
-    double GetValue() {
-        cout << "rhs: " << rhs << endl;
-        cout << "sin:cal: " << sin(rhs) << endl;
-        return sin(rhs);
-    }
+    double GetValue() { return sin(rhs); }
     int GetPrecedence() { return this->precedence; }
 
    protected:
-    int precedence = 4;
+    int precedence = 6;
 } Sin;
 
 class Cos : public UnaryOperator {
@@ -156,7 +152,7 @@ class Cos : public UnaryOperator {
     int GetPrecedence() { return this->precedence; }
 
    protected:
-    int precedence = 4;
+    int precedence = 6;
 } Cos;
 
 class Tan : public UnaryOperator {
@@ -166,7 +162,7 @@ class Tan : public UnaryOperator {
     int GetPrecedence() { return this->precedence; }
 
    protected:
-    int precedence = 4;
+    int precedence = 6;
 } Tan;
 
 class Factorial : public UnaryOperator {
@@ -182,7 +178,57 @@ class Factorial : public UnaryOperator {
     int GetPrecedence() { return this->precedence; }
 
    protected:
-    int precedence = 5;
+    int precedence = 10;
 } Factorial;
+
+class Square : public UnaryOperator {
+   public:
+    Square() = default;
+    double GetValue() { return pow(rhs, 2); }
+    int GetPrecedence() { return this->precedence; }
+
+   protected:
+    int precedence = 4;
+} Square;
+
+class Sqrt : public UnaryOperator {
+   public:
+    Sqrt() = default;
+    double GetValue() { return pow(rhs, 0.5); }
+    int GetPrecedence() { return this->precedence; }
+
+   protected:
+    int precedence = 3;
+} Sqrt;
+
+class Power2 : public UnaryOperator {
+   public:
+    Power2() = default;
+    double GetValue() { return pow(2, rhs); }
+    int GetPrecedence() { return this->precedence; }
+
+   protected:
+    int precedence = 3;
+} Power2;
+
+class Power10 : public UnaryOperator {
+   public:
+    Power10() = default;
+    double GetValue() { return pow(10, rhs); }
+    int GetPrecedence() { return this->precedence; }
+
+   protected:
+    int precedence = 3;
+} Power10;
+
+class Negate : public UnaryOperator {
+   public:
+    Negate() = default;
+    double GetValue() { return -rhs; }
+    int GetPrecedence() { return this->precedence; }
+
+   protected:
+    int precedence = 3;
+}Negate;
 
 #endif

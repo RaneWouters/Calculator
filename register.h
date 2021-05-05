@@ -39,6 +39,11 @@ void OperatorInit(class OperatorFactory& OperatorFactory) {
     OperatorFactory.Register("tan", Tan);
     OperatorFactory.Register("!", Factorial);
     OperatorFactory.Register("Exp", Exp);
+    OperatorFactory.Register("^2", Square);
+    OperatorFactory.Register("sqrt", Sqrt);
+    OperatorFactory.Register("twond", Power2);
+    OperatorFactory.Register("tennd", Power10);
+    OperatorFactory.Register("+-", Negate);
 }
 
 class MRegister {
