@@ -23,4 +23,10 @@ void In::Init() {
         }
         this->target.push_back(a);
     }
+    
+//    this->target.push_back("(");
+//    this->target.push_back("3");
+//    this->target.push_back("-");
+//    this->target.push_back("4");
+//    this->target.push_back(")");
 }

@@ -11,7 +11,7 @@ queue<string> RPInit(vector<string>& temp) {
     stack<string> RP_sign;
 
     for (auto q = temp.begin(); q != temp.end(); ++q) {
-        if ((*q->begin() >= '0' && *q->begin() <= '9') || *q->begin() == '-') {
+        if ((*q->begin() >= '0' && *q->begin() <= '9') || (*q->begin() == '-' && *q != "-")) {
             RP.push(*q);
         } else if (*q == "(") {
             RP_sign.push(*q);
@@ -66,7 +66,7 @@ double RPCalculate(queue<string>& temp) {
     stack<double> Value;
     while (!temp.empty()) {
         //string t = temp.front();
-        if ((*temp.front().begin() >= '0' && *temp.front().begin() <= '9') || *temp.front().begin() == '-') {
+        if ((*temp.front().begin() >= '0' && *temp.front().begin() <= '9') || (*temp.front().begin() == '-' && temp.front() != "-")) {
             Value.push(stod(temp.front()));
             temp.pop();
         } else {
